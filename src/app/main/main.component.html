@@ -1,0 +1,62 @@
+<nav class="container-fluid navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="https://cryptologos.cc/logos/binance-coin-bnb-logo.png" alt="" width="40px"
+        class="d-inline-block align-text-top">
+    </a>
+  </div>
+</nav>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-auto">
+      <span class="badge bg-primary my-4 mx-1">BNB: {{currentPriceBNB |
+        number: ""}}</span>
+      <span class="badge bg-primary my-4 mx-1">USD: {{currentPriceUSD |
+        number: ""}}</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-auto">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Chốt lãi</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Tính Lợi nhuận thu được dựa trên biến động giá.</h6>
+          <div class="row align-items-center">
+            <div class="col-4">
+              <label class="col-form-label text-success">Giá vào</label>
+            </div>
+            <div class="col">
+              <input type="tel" class="form-control form-control-sm" placeholder="USD/BNB" [(ngModel)]="buyPriceBNB">
+            </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-4">
+              <label class="col-form-label">Số lượng</label>
+            </div>
+            <div class="col">
+              <input type="tel" class="form-control form-control-sm" placeholder="USD" [(ngModel)]="buyAmountUSD">
+            </div>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-4">
+              <label class="col-form-label text-danger">Giá ra</label>
+            </div>
+            <div class="col">
+              <input type="tel" class="form-control form-control-sm" placeholder="USD/BNB" [(ngModel)]="sellPriceBNB">
+            </div>
+          </div>
+          <div class="row align-items-center mt-4">
+            <div class="col-4">
+              <label class="col-form-label">Thu về</label>
+            </div>
+            <div class="col">
+              <span [class.text-success]="((buyAmountUSD / buyPriceBNB) * sellPriceBNB) > 0" [class.text-danger]="((buyAmountUSD / buyPriceBNB) * sellPriceBNB) < 0">{{((buyAmountUSD / buyPriceBNB) * sellPriceBNB) - buyAmountUSD | number}}</span> <br/>
+              <small class="text-muted">{{(((buyAmountUSD / buyPriceBNB) * sellPriceBNB) - buyAmountUSD) *
+                currentPriceUSD | number}} VNĐ</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
